@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  poc.redispagination:
+    image: ${DOCKER_REGISTRY-}pocredispagination
+    build:
+      context: .
+      dockerfile: PoC.RedisPagination/Dockerfile
+    depends_on:
+      - pocredispaginationdb
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5000:80"
+    networks:
+      - redis-net
+
+  pocredispaginationdb:
+    image: redis:alpine
+    container_name: pocredispaginationdb
+    ports:
+      - "6379:6379"
+    networks:
+      - redis-net
+
+networks:
+  redis-net:
+    driver: bridge

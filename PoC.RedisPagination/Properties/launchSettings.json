@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PoC.RedisPagination": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
